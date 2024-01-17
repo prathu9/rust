@@ -28,7 +28,7 @@
 => After compiling Rust compiler will create 2 files on windows and 1 files in linux/macos.
 => linux and macos will have "hello_world" file and windows will have "hello_world.exe" file that's binary executable.
 => And windows will create additional file ".pdb" that contains debugging information.
-=> Run hello_world.exe
+=> Run hello_world or hello_world.exe depending on platform
 
-> ./hello_world.exe // for linux and macos
+> ./hello_world // for linux and macos
 > .\hello_world.exe // for windows
