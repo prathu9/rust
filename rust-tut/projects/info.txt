@@ -1,0 +1,34 @@
+## Hello world
+=> Rust uses .rs extension
+=> Create file hello_world.rs 
+=> Rust entry point is function named main
+=> function is written as:
+
+> fn function_name() {}
+
+=> Rust main function will be:
+> fn main() {}
+
+=> Hello world in Rust:
+
+> fn main() {
+    println!("Hello World");
+  }
+
+=> Use println! to print text on screen.
+=> println! calls Rust macro, using ! means calling macro instead of normal function.
+=> Marco don't always follow the same rule as functions.
+=> To call function we would've used just println without '!'.
+
+=> To Rust file first we need to compile it.
+=> Use rustc to compile Rust file.
+
+> rustc hello_world.rs
+
+=> After compiling Rust compiler will create 2 files on windows and 1 files in linux/macos.
+=> All linux, macos and windows will have ".exe" file that's binary executable.
+=> And windows will create additional file ".pdb" that contains debugging information.
+=> Run hello_world.exe
+
+> ./hello_world.exe // for linux and macos
+> .\hello_world.exe // for windows

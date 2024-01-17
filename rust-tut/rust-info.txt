@@ -1,5 +1,0 @@
-=> Variables are assigned using 'let'.
-=> Print standard output using print!() or println!().
-=> Scope of variable is block of code where it is declared
-=> Shadowing allows variable to be re-declared in the same scope with the same name.
-=>  
