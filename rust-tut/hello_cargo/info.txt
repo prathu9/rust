@@ -1,0 +1,62 @@
+=> Cargo is Rust build system and package manager.
+=> Cargo handles task such as,
+- Building code
+- Downloading libraries that code requires and building those libraries
+
+## Create project
+> cargo new project_name // Creating new cargo project with name project_name
+
+> cargo new hello_cargo // Creating new cargo project with name hello_cargo
+
+=> After running this commands cargo creates "src" folder with "main.rs" and Cargo.toml 
+=> The project is initialised with git repo along with .gitignore, but if project is created inside existing git repo then git files won't be generated. To override this behaviour use --vcs=git.
+=> Use --vcs flag to change version control.
+
+## Cargo.toml file
+=> Cargo.toml is cargo's configuration file.
+=> The file is in TOML (Tom's Obvious, Minimal Language) format.
+
+> [package]
+  name = "hello_cargo"
+  version = "0.1.0"
+  edition = "2021"
+
+  # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+  [dependencies]
+
+=> [package] is section heading that indicates that following statements are configuring package 
+=> The next three lines set the configuration information Cargo needs to compile your program; the name, the version and the edition of Rust to use.
+=> [dependencies] is the start of the section to list all of the projects dependencies. 
+=> In Rust packages of code are referred to as "Crates".
+
+## Build and Run project
+=> After creating Cargo project we can run and build the project.
+
+> cargo build // This command will build the project
+
+=> After running build command it will create executables file target/debug/hello_cargo in linux or macos and target\debug\hello_cargo.exe in windows.
+=> Default build is debug build so it is generates in debug folder.
+=> We can create fast release version by using --release flag, this will create release version of app in release folder
+
+> cargo build --release
+
+=> We can now run executables in terminal
+
+> ./target/debug/hello_cargo // linux or macos
+> .\target\debug\hello_cargo.exe // Windows powershell
+
+=> Running cargo build also creates a Cargo.lock file that keeps track of exact version of the dependencies
+
+=> We can compile and run executables with on command.
+
+> cargo run // This command will compile and run executables.
+
+=> We can check before if project compiles without creating executables
+
+> cargo check // This command will compile project without creating executables
+
+## Production
+=> To create release version of app use --release flag
+
+> cargo build --release // This command will create release version in target/release folder
