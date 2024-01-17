@@ -26,7 +26,7 @@
 > rustc hello_world.rs
 
 => After compiling Rust compiler will create 2 files on windows and 1 files in linux/macos.
-=> All linux, macos and windows will have ".exe" file that's binary executable.
+=> linux and macos will have "hello_world" file and windows will have "hello_world.exe" file that's binary executable.
 => And windows will create additional file ".pdb" that contains debugging information.
 => Run hello_world.exe
 
