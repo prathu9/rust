@@ -1,7 +1,7 @@
 > cargo new guessing_game // Creating new guessing game
 
 => Use `io` library to get user input and print result as output.
-=> `io` library is comes from standard library, known as `std`.
+=> `io` library comes from standard library, known as `std`.
 
 > use std::io; // importing std::io to accept user input
 
