@@ -1,0 +1,76 @@
+> cargo new guessing_game // Creating new guessing game
+
+=> Use `io` library to get user input and print result as output.
+=> `io` library is comes from standard library, known as `std`.
+
+> use std::io; // importing std::io to accept user input
+
+=> By default rust have set of items defined in the standard library that it brings into scope of every program. This set is called prelude.
+=> The items listed in prelude doesn't need to import.
+=> Standard prelude contains:
+- Primtive Types (bool, char, i32, u64)
+- Common Traits (Clone, Copy, Debug, Default, Fn)
+- Common function and macros (drop, print!, println!, vec!, assert!)
+
+=> If a type is not in prelude then we need to bring it into scope explicitly using `use` statement.
+
+
+# Storing value with variables:
+
+> let mut guess = String::new(); // Creating new mutable variable with name guess
+
+=> `let` is used to create variables.
+=> By default variables in Rust are immutable.
+=> `mut`is used to make a variables mutable.
+=> Guess is assigned value `String::new()`
+=> `String` is string type provided by standard library that is growable, UTF-8 bit of text.
+=> `::` in `::new` indicates `new` is an associated function of the String type.
+=> An associated function is a function that's implemented on type, in this case String.
+=> `new` function creates new, empty string.
+=> `new` function is present on many types because it’s a common name for a function that makes a new value of some kind.
+
+# Receiving User input
+
+> io::stdin()
+        .read_line(&mut guess) // Reading user input using stdin function
+
+=> To handle user input we call `stdin` function from `io` module.
+=> Without importing `io` module with `use std::io`, we can call `stdin` function with `std::io::stdin()`
+=> `stdin` returns an instance of `std::io::stdin` which is a type that represents a handle to standard input for your terminal.
+=> `read_line(&mut guess)` calls `read_line` method of standard input handle to get user input.
+=> `&mut guess` argument is used to tell what string to store the user input.
+=>  The full job of read_line is to take whatever the user types into standard input and append that into a string (without overwriting its contents).
+=> `&` indicates that this argument is reference.
+=> Reference gives you a way to use one piece of data in multiple parts of code without copying that code into memory multiple times.
+
+# Handling error
+
+=> `read_line` also returns a `Result` value.
+=> `Result` is an enumeration also called enum.which is a type that can be in one of multiple possible states. We call each possible state a variant.
+=> `Result` variants:
+- `Ok` -> Indicates operation was successful, `Ok` contains successfully generated value.
+- `Err`-> Indicates operation failed, `Err` contains why operation failed
+
+=> The `Result` have `expect` method that can be called to handle error.
+
+> .expect("Failed to read line");
+
+=> `expect` will cause program to crash and display the message passed to it if, instance of `Result` is an `Err` value.
+=> `expect` will return the value held by `Ok`, id `Result` is `Ok`.
+
+# Printing result
+
+> println!("You guessed: {guess}");
+
+=> `println!` macro is used to print result.
+=> `{}` is a placeholder.
+=> When printing variable the curly braces contains variable name, `{guess}`.
+=> When printing a result of evaluating expression place empty curly braces `{}`.
+> println!("x = {} and y = {}", 1, 2); // Will "print x = 1 and y = 2"
+
+
+
+
+
+
+
