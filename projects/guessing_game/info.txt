@@ -119,6 +119,53 @@
 
 > cargo doc --open
 
+## Comparing the guess to secret number
+
+# Converting string to number type
+
+=> `guess` variable is of type string.
+=> `secret_number` is number type (132 by default).
+=> Rust have multiple number types 
+- i32 : 32 bit number
+- u32 : 32 bit unsigned number
+- i64 : 64 bit number
+- u64 : 64 bit unsigned number 
+=> To compare `guess` with `secret_number` we need to convert `guess` type to number.
+
+> let guess: u32 = guess.trim().parse().expect("Please type a number!");
+
+=> Here we add new value to `guess` variable, Rust allow us to shadow the previous value of `guess` with a new one.
+
+=> Rather than creating new variable we can use shadowing to reuse variable name.
+
+=> In `guess.trim().parse()` guess is original `guess` variable that contains input as a string. `trim()` will eliminate whitespaces at the beginning and end.
+
+=> The user must press enter to satisfy read_line and input their guess, which adds a newline character to the string. For example, if the user types 5 and presses enter, guess looks like this: 5\n. The \n represents “newline.” (On Windows, pressing enter results in a carriage return and a newline, \r\n.) The trim method eliminates \n or \r\n, resulting in just 5.
+
+=> `parse()` method on strings converts a string to another type. In our example we convert string to number.
+=> `:u32` in `let guess:u32` tells Rust what number type we want.
+=> Since we are comparing u32 type `guess` with `secret_number`, Rust will infer `secret_number` to u32. 
+=> `parse()` method returns "Result" type. If Result type is `OK` then expect will return converted number, else if it is `Err` then expect will throw error and print given string.
+
+> use std::cmp::Ordering;
+  
+  match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!");
+        Ordering::Greater => println!("Too big!");
+        Ordering::Equal => println!("You win!");
+  }
+
+=> Add `std::cmp::Ordering` type from standard library using `use`.
+=> `Ordering` type is an enum with variants `Less`, `Greater` and `Equal`.
+=> `cmp` method compares two values, it can be called upon anything that can be compared. Here wee call `cmp` on `guess`.
+=> `cmp` takes reference to whatever you compare with, here we give it reference to `&secret_number`.
+=> `cmp` returns variant of Ordering enum.
+=> `match` is used to decide what to do next based on variant returned by calling `cmp`.
+=> `match` expression is made up of "arms".
+=> An "arm" consist of a pattern to match against, and code that should be run when value given to `match` fits that arm's pattern.
+
+
+
 
 
 
