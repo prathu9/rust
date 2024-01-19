@@ -68,6 +68,64 @@
 => When printing a result of evaluating expression place empty curly braces `{}`.
 > println!("x = {} and y = {}", 1, 2); // Will "print x = 1 and y = 2"
 
+## Generating random number using `rand` crate
+
+=> "crate" is a collection of Rust source code files.
+=> The project we are building is a "binary crate".
+=> "rand crate" is a library crate that can help generate random number.
+=> Add 'rand` crate as a dependency in Cargo.toml with version number under dependencies header section.
+
+> [dependencies] 
+  rand = "0.8.5" //adding rand crate as dependencyin Cargo.toml
+
+=> Note: Version may change in future
+=> After adding `rand` crate in Cargo.toml run `cargo build`.
+=> After adding external dependency, Cargo will fetch all the latest version of everything that dependency needs from the registry, which is a copy of data from crates.io.
+=> Crate.io have all the open source rust projects for others to use, built by Rust programmers.
+=> After updating the registry, Cargo checks the [dependencies] section and downloads any crates listed that aren’t already downloaded.
+=> After downloading crates Rust compiles them and then compiles the project with the dependencies available.
+
+# Reproducible Builds with the Cargo.lock File
+
+=> Cargo.lock file is important for reproducible builds.
+=> When we build a project for the first time, Cargo figures out all the versions of the dependencies that fit the criteria and then writes them to the Cargo.lock file.
+=> When we build our project in the future, Cargo will see that the Cargo.lock file exists and will use the versions specified there rather than doing all the work of figuring out versions again. 
+
+# Updating crate to get a New version
+
+> cargo update
+
+=> To update crate first update version in Cargo.toml and run `cargo update` to update the crate.
+=> `cargo update` will ignore Cargo.lock file and figure out all the latest versions that are available that fits our specifications in Cargo.toml.
+=> Cargo will then rewrite the Cargo.lock file.
+=> Next time `cargo build` is run, cargo will update registry of crates available and reevaluate your `rand` requirements according to new version.
+
+# Generaing random number
+
+=> Import `rand` into our code.
+
+> use rand::Rng; // importing rand and Rng traits from rand
+
+=> `Rng` trait defines methods that random number generators implement.
+
+> let secret_number = rand::thread_rng().gen_range(1..=100);
+
+=> Calling `rand::thread_rng()` function gives us the particular random number generator we're going to use: one that is local to current thread of execution and seeded by the operating system.
+=> We call `gen_range()` method on the random number generator. This method is defined in `Rng` trait.
+=> `gen_range(1..=100)` takes range expression as an argument.
+=> Range expression `1..-100` takes form of `start..=end`, start and end are inclusive.
+=> `1..=100` gives number in range 1 to 100.
+=> To get documentation of all the installed dependencies use:
+
+> cargo doc --open
+
+
+
+
+
+
+
+
 
 
 
